@@ -10,28 +10,33 @@ builder.Services.AddOpenApi();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+//// Configure the HTTP request pipeline.
+//if (app.Environment.IsDevelopment())
+//{
+//    app.MapOpenApi();
+
+//    app.UseSwaggerUI(options =>
+//    {
+//        options.SwaggerEndpoint("/openapi/v1.json", "v1");
+//    });
+
+//    app.UseReDoc(options =>
+//    {
+//        options.SpecUrl("/openapi/v1.json");
+//    });
+
+//    app.MapScalarApiReference();
+//}
+
+//app.UseHttpsRedirection();
+
+//app.UseAuthorization();
+
+//app.MapControllers();
+
+app.Run(async (context) =>
 {
-    app.MapOpenApi();
-
-    app.UseSwaggerUI(options =>
-    {
-        options.SwaggerEndpoint("/openapi/v1.json", "v1");
-    });
-
-    app.UseReDoc(options =>
-    {
-        options.SpecUrl("/openapi/v1.json");
-    });
-
-    app.MapScalarApiReference();
-}
-
-app.UseHttpsRedirection();
-
-app.UseAuthorization();
-
-app.MapControllers();
+    await context.Response.WriteAsync("Hello World!");
+}); 
 
 app.Run();
