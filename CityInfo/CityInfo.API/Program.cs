@@ -1,12 +1,30 @@
+using Microsoft.AspNetCore.StaticFiles;
+using Microsoft.OpenApi.MicrosoftExtensions;
 using Scalar.AspNetCore;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers();
+builder.Services.AddControllers(options =>
+{
+    options.ReturnHttpNotAcceptable = true;
+}).AddXmlDataContractSerializerFormatters();
+
+// Example how to manipulate Error responses
+//builder.Services.AddProblemDetails(options =>
+//{
+//    options.CustomizeProblemDetails = ctx =>
+//    {
+//        ctx.ProblemDetails.Extensions.Add("additionalInfo", "Additional info example");
+//        ctx.ProblemDetails.Extensions.Add("server", Environment.MachineName);
+//    };
+//});
+
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
+builder.Services.AddSingleton<FileExtensionContentTypeProvider>();
 
 var app = builder.Build();
 
@@ -30,9 +48,17 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseRouting();
+
 app.UseAuthorization();
 
 app.MapControllers();
+
+// Before .NET6+ 
+//app.UseEndpoints(endpoints =>
+//{
+//    endpoints.MapControllers(); 
+//});
 
 //app.Run(async (context) =>
 //{

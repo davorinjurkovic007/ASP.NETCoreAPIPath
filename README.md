@@ -10,15 +10,21 @@ ASP.NET Core API path for practice
 
    -- Using Swager and scalar: https://learn.microsoft.com/en-us/aspnet/core/fundamentals/openapi/using-openapi-documents?view=aspnetcore-10.0
 
-&nbsp;  -- OpenAPI with Aspira, Swagger and Scalar primjer na početku: https://youtu.be/0qtwYT4n2CM?si=fWqgX8WOQMRws6zK
+   -- OpenAPI with Aspira, Swagger and Scalar primjer na početku: https://youtu.be/0qtwYT4n2CM?si=fWqgX8WOQMRws6zK
 
-&nbsp;  -- .NET CLI overview: https://learn.microsoft.com/en-us/dotnet/core/tools/
+   -- .NET CLI overview: https://learn.microsoft.com/en-us/dotnet/core/tools/
 
-&nbsp;  -- Lunch with CLI: dotnet run 
+   -- Lunch with CLI: dotnet run
 
-&nbsp;	Napomena: Samo pokreće http profile
+ 	Napomena: Samo pokreće http profile
 
-&nbsp;     dotnet run --launch-profile https	
+      dotnet run --launch-profile https
 
-&nbsp;  	
+  -- Routing in ASP.NET Core: https://learn.microsoft.com/en-us/aspnet/core/fundamentals/routing?view=aspnetcore-10.0
+
+  -- Solving problem in Swagger: https://www.reddit.com/r/dotnet/comments/1ouqvx5/have\_you\_seen\_swaggerui\_fail\_with\_route/
+
+&nbsp; -- Format response data in ASP.NET Core Web API: https://learn.microsoft.com/en-us/aspnet/core/web-api/advanced/formatting?view=aspnetcore-10.0
+
+ 
 
