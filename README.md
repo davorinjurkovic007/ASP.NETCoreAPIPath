@@ -24,7 +24,13 @@ ASP.NET Core API path for practice
 
   -- Solving problem in Swagger: https://www.reddit.com/r/dotnet/comments/1ouqvx5/have\_you\_seen\_swaggerui\_fail\_with\_route/
 
-&nbsp; -- Format response data in ASP.NET Core Web API: https://learn.microsoft.com/en-us/aspnet/core/web-api/advanced/formatting?view=aspnetcore-10.0
+  -- Format response data in ASP.NET Core Web API: https://learn.microsoft.com/en-us/aspnet/core/web-api/advanced/formatting?view=aspnetcore-10.0
+
+  -- Fluent Validation: https://docs.fluentvalidation.net/en/latest/index.html
+
+&nbsp; -- JavaScript Object Notation (JSON) Patch : https://datatracker.ietf.org/doc/html/rfc6902
+
+&nbsp; -- HTTP PATCH Method: Partial Updates for RESTful APIs: https://blog.postman.com/http-patch-method/ Note: 416 error regarding PATCH
 
  
 

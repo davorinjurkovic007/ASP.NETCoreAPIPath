@@ -10,7 +10,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers(options =>
 {
     options.ReturnHttpNotAcceptable = true;
-}).AddXmlDataContractSerializerFormatters();
+}).AddNewtonsoftJson()
+  .AddXmlDataContractSerializerFormatters();
 
 // Example how to manipulate Error responses
 //builder.Services.AddProblemDetails(options =>
