@@ -28,9 +28,15 @@ ASP.NET Core API path for practice
 
   -- Fluent Validation: https://docs.fluentvalidation.net/en/latest/index.html
 
-&nbsp; -- JavaScript Object Notation (JSON) Patch : https://datatracker.ietf.org/doc/html/rfc6902
+  -- JavaScript Object Notation (JSON) Patch : https://datatracker.ietf.org/doc/html/rfc6902
 
-&nbsp; -- HTTP PATCH Method: Partial Updates for RESTful APIs: https://blog.postman.com/http-patch-method/ Note: 416 error regarding PATCH
+  -- HTTP PATCH Method: Partial Updates for RESTful APIs: https://blog.postman.com/http-patch-method/ Note: 416 error regarding PATCH
+
+  -- Dependency injection in ASP.NET Core: https://learn.microsoft.com/en-us/aspnet/core/fundamentals/dependency-injection?view=aspnetcore-10.0
+
+  -- Logging in .NET and ASP.NET Core : https://learn.microsoft.com/en-us/aspnet/core/fundamentals/logging/?view=aspnetcore-10.0
+
+&nbsp; -- Third-party logging providers : https://learn.microsoft.com/en-us/aspnet/core/fundamentals/logging/?view=aspnetcore-10.0#third-party-logging-providers
 
  
 
