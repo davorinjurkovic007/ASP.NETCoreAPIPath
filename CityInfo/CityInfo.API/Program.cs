@@ -1,10 +1,12 @@
 using CityInfo.API;
 using CityInfo.API.DbContexts;
+using CityInfo.API.Profiles;
 using CityInfo.API.Services;
 using Microsoft.AspNetCore.StaticFiles;
 using Microsoft.EntityFrameworkCore;
 using Scalar.AspNetCore;
 using Serilog;
+using System.Reflection;
 
 Log.Logger = new LoggerConfiguration()
     .MinimumLevel.Debug()
@@ -51,6 +53,14 @@ builder.Services.AddSingleton<CitiesDataStore>();
 builder.Services.AddDbContext<CityInfoContext>(dbContextOptions 
     => dbContextOptions.UseSqlite(
         builder.Configuration["ConnectionStrings:CityInfoDBConnectionString"]));
+
+builder.Services.AddScoped<ICityInfoRepository, CityInfoRepository>();
+
+builder.Services.AddAutoMapper(cfg =>
+{
+    cfg.AddProfile<CityProfile>();
+    cfg.AddProfile<PointOfInterestProfile>();
+});
 
 var app = builder.Build();
 
