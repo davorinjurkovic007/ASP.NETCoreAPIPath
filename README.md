@@ -36,7 +36,29 @@ ASP.NET Core API path for practice
 
   -- Logging in .NET and ASP.NET Core : https://learn.microsoft.com/en-us/aspnet/core/fundamentals/logging/?view=aspnetcore-10.0
 
-&nbsp; -- Third-party logging providers : https://learn.microsoft.com/en-us/aspnet/core/fundamentals/logging/?view=aspnetcore-10.0#third-party-logging-providers
+  -- Third-party logging providers : https://learn.microsoft.com/en-us/aspnet/core/fundamentals/logging/?view=aspnetcore-10.0#third-party-logging-providers
 
- 
+&#x20; -- Manage JSON Web Tokens in development with dotnet user-jwts : https://learn.microsoft.com/en-us/aspnet/core/security/authentication/jwt-authn?view=aspnetcore-10.0\&tabs=windows
+
+&#x20;    --	Examples of usage:
+
+&#x09;...projectdirectory $> dotnet user-jwts create --help
+
+        Default token: $> dotnet user-jwts create
+
+&#x09;Key: dotnet user-jwts key --issuer https://localhost:7003
+
+&#x09;-- taj Key prekopiramo u kod: Authentication:SecretForKey, i zatim pozovemo sljedeću komandu.
+
+&#x09;Generated Token: dotnet user-jwts create --issuer https://localhost:7003 --audience cityinfoapi
+
+&#x09;-- Token sa City claim: $> dotnet user-jwts create --issuer https://localhost:7003 --audience cityinfoapi --claim "city=Antwerp"
+
+&#x20;       List of local tokens for the project: $> dotnet user-jwts list
+
+&#x09;Return saved token with Id from previous command: $> dotnet user-jwts print d0edc01b
+
+&#x20; -- Course tip: Securing ASP.NET Core with OAuth2 and OpenID Connect
+
+&#x09;
 
