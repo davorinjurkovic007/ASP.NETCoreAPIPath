@@ -1,0 +1,271 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CityInfo.API</name>
+    </assembly>
+    <members>
+        <member name="T:CityInfo.API.Controllers.AuthenticationController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:CityInfo.API.Controllers.AuthenticationController.AuthenticationRequestBody">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:CityInfo.API.Controllers.AuthenticationController.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            
+            </summary>
+            <param name="configuration"></param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="M:CityInfo.API.Controllers.AuthenticationController.Authenticate(CityInfo.API.Controllers.AuthenticationController.AuthenticationRequestBody)">
+            <summary>
+            
+            </summary>
+            <param name="authenticationRequestBody"></param>
+            <returns></returns>
+        </member>
+        <member name="T:CityInfo.API.Controllers.CitiesController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:CityInfo.API.Controllers.CitiesController.#ctor(CityInfo.API.Services.ICityInfoRepository,AutoMapper.IMapper)">
+            <summary>
+            
+            </summary>
+            <param name="cityInfoRepository"></param>
+            <param name="mapper"></param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="M:CityInfo.API.Controllers.CitiesController.GetCities(System.String,System.String,System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="name"></param>
+            <param name="searchQuery"></param>
+            <param name="pageNumber"></param>
+            <param name="pageSize"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CityInfo.API.Controllers.CitiesController.GetCity(System.Int32,System.Boolean)">
+            <summary>
+            Get a city by id
+            </summary>
+            <param name="id">The id of the city to get</param>
+            <param name="includePointsOfInterest">Whether or not to include the points of interest</param>
+            <returns>A city with or without points of interest</returns>
+            <response code="200">Returns the requested city</response>
+        </member>
+        <member name="T:CityInfo.API.Controllers.FilesController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:CityInfo.API.Controllers.FilesController.#ctor(Microsoft.AspNetCore.StaticFiles.FileExtensionContentTypeProvider)">
+            <summary>
+            
+            </summary>
+            <param name="fileExtensionContentTypeProvider"></param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="M:CityInfo.API.Controllers.FilesController.GetFile(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="fileId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CityInfo.API.Controllers.FilesController.Createfile(Microsoft.AspNetCore.Http.IFormFile)">
+            <summary>
+            
+            </summary>
+            <param name="file"></param>
+            <returns></returns>
+        </member>
+        <member name="T:CityInfo.API.Controllers.PointsOfInterestController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:CityInfo.API.Controllers.PointsOfInterestController.#ctor(Microsoft.Extensions.Logging.ILogger{CityInfo.API.Controllers.PointsOfInterestController},CityInfo.API.Services.IMailService,CityInfo.API.Services.ICityInfoRepository,AutoMapper.IMapper)">
+            <summary>
+            
+            </summary>
+            <param name="logger"></param>
+            <param name="mailService"></param>
+            <param name="cityInfoRepository"></param>
+            <param name="mapper"></param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="M:CityInfo.API.Controllers.PointsOfInterestController.GetPointsOfInterest(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="cityId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CityInfo.API.Controllers.PointsOfInterestController.GetPointOfInterest(System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="cityId"></param>
+            <param name="pointOfInterestId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CityInfo.API.Controllers.PointsOfInterestController.CreatePointOfInterest(System.Int32,CityInfo.API.Models.PointOfInterestForCreationDto)">
+            <summary>
+            
+            </summary>
+            <param name="cityId"></param>
+            <param name="pointOfInterest"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CityInfo.API.Controllers.PointsOfInterestController.UpdatePointOfInterest(System.Int32,System.Int32,CityInfo.API.Models.PointOfInterestForUpdateDto)">
+            <summary>
+            
+            </summary>
+            <param name="cityId"></param>
+            <param name="pointofinterestid"></param>
+            <param name="pointOfInterest"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CityInfo.API.Controllers.PointsOfInterestController.PartiallyUpdatePointOfInterest(System.Int32,System.Int32,Microsoft.AspNetCore.JsonPatch.JsonPatchDocument{CityInfo.API.Models.PointOfInterestForUpdateDto})">
+            <summary>
+            
+            </summary>
+            <param name="cityId"></param>
+            <param name="pointOfInterestid"></param>
+            <param name="patchDocument"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CityInfo.API.Controllers.PointsOfInterestController.DeletePointOfInterest(System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="cityId"></param>
+            <param name="pointOfInterestId"></param>
+            <returns></returns>
+        </member>
+        <member name="T:CityInfo.API.Migrations.CityInfoDBInitialMigration">
+            <inheritdoc />
+        </member>
+        <member name="M:CityInfo.API.Migrations.CityInfoDBInitialMigration.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:CityInfo.API.Migrations.CityInfoDBInitialMigration.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:CityInfo.API.Migrations.CityInfoDBInitialMigration.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:CityInfo.API.Migrations.CityInfoDBAddPOIDescription">
+            <inheritdoc />
+        </member>
+        <member name="M:CityInfo.API.Migrations.CityInfoDBAddPOIDescription.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:CityInfo.API.Migrations.CityInfoDBAddPOIDescription.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:CityInfo.API.Migrations.CityInfoDBAddPOIDescription.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:CityInfo.API.Migrations.InitialDataSeed">
+            <inheritdoc />
+        </member>
+        <member name="M:CityInfo.API.Migrations.InitialDataSeed.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:CityInfo.API.Migrations.InitialDataSeed.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:CityInfo.API.Migrations.InitialDataSeed.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:CityInfo.API.Migrations.InitialDataSeed_Update">
+            <inheritdoc />
+        </member>
+        <member name="M:CityInfo.API.Migrations.InitialDataSeed_Update.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:CityInfo.API.Migrations.InitialDataSeed_Update.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:CityInfo.API.Migrations.InitialDataSeed_Update.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:CityInfo.API.Models.CityWithoutPointsOfInterestDto">
+            <summary>
+            A city without points of interest
+            </summary>
+        </member>
+        <member name="P:CityInfo.API.Models.CityWithoutPointsOfInterestDto.Id">
+            <summary>
+            The id of the city
+            </summary>
+        </member>
+        <member name="P:CityInfo.API.Models.CityWithoutPointsOfInterestDto.Name">
+            <summary>
+            The name of the city
+            </summary>
+        </member>
+        <member name="P:CityInfo.API.Models.CityWithoutPointsOfInterestDto.Description">
+            <summary>
+            The description of the city
+            </summary>
+        </member>
+        <member name="T:Program">
+            <summary>
+            Auto-generated public partial Program class for top-level statement apps.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.OpenApi.Generated.DocumentationCommentIdHelper.CreateDocumentationId(System.Type)">
+            <summary>
+            Generates a documentation comment ID for a type.
+            Example: T:Namespace.Outer+Inner`1 becomes T:Namespace.Outer.Inner`1
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.OpenApi.Generated.DocumentationCommentIdHelper.CreateDocumentationId(System.Reflection.PropertyInfo)">
+            <summary>
+            Generates a documentation comment ID for a property.
+            Example: P:Namespace.ContainingType.PropertyName or for an indexer P:Namespace.ContainingType.Item(System.Int32)
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.OpenApi.Generated.DocumentationCommentIdHelper.CreateDocumentationId(System.Type,System.String)">
+            <summary>
+            Generates a documentation comment ID for a property given its container type and property name.
+            Example: P:Namespace.ContainingType.PropertyName
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.OpenApi.Generated.DocumentationCommentIdHelper.CreateDocumentationId(System.Reflection.MethodInfo)">
+            <summary>
+            Generates a documentation comment ID for a method (or constructor).
+            For example:
+              M:Namespace.ContainingType.MethodName(ParamType1,ParamType2)~ReturnType
+              M:Namespace.ContainingType.#ctor(ParamType)
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.OpenApi.Generated.DocumentationCommentIdHelper.GetTypeDocId(System.Type,System.Boolean,System.Boolean)">
+            <summary>
+            Generates a documentation ID string for a type.
+            This method handles nested types (replacing '+' with '.'),
+            generic types, arrays, pointers, by-ref types, and generic parameters.
+            The <paramref name="includeGenericArguments"/> flag controls whether
+            constructed generic type arguments are emitted, while <paramref name="omitGenericArity"/>
+            controls whether the generic arity marker (e.g. "`1") is appended.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.OpenApi.Generated.DocumentationCommentIdHelper.NormalizeDocId(System.String)">
+            <summary>
+            Normalizes a documentation comment ID to match the compiler-style format.
+            Strips the return type suffix for ordinary methods but retains it for conversion operators.
+            </summary>
+            <param name="docId">The documentation comment ID to normalize.</param>
+            <returns>The normalized documentation comment ID.</returns>
+        </member>
+    </members>
+</doc>

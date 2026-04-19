@@ -6,6 +6,9 @@ using System.Security.Claims;
 
 namespace CityInfo.API.Controllers
 {
+    /// <summary>
+    /// 
+    /// </summary>
     [Route("api/authentication")]
     [ApiController]
     public class AuthenticationController : ControllerBase
@@ -13,10 +16,13 @@ namespace CityInfo.API.Controllers
         private readonly IConfiguration _configuration;
 
         // we won't use this outside of this class, so we can scope it to this namespace
+        /// <summary>
+        /// 
+        /// </summary>
         public class AuthenticationRequestBody
         {
-            public string? UserName { get; set; }
-            public string? Password { get; set; }
+            public string UserName { get; set; }
+            public string Password { get; set; }
         }
 
         private class CityInfoUser
@@ -37,11 +43,21 @@ namespace CityInfo.API.Controllers
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="configuration"></param>
+        /// <exception cref="ArgumentNullException"></exception>
         public AuthenticationController(IConfiguration configuration)
         {
             _configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="authenticationRequestBody"></param>
+        /// <returns></returns>
         [HttpPost("authenticate")]
         public ActionResult<string> Authenticate(AuthenticationRequestBody authenticationRequestBody)
         {

@@ -1,17 +1,27 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using Asp.Versioning;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.StaticFiles;
 
 namespace CityInfo.API.Controllers
 {
-    [Route("api/files")]
+    /// <summary>
+    /// 
+    /// </summary>
+    //[Route("api/files")]
+    [Route("api/v{version:apiVersion}/files")]
     [Authorize]
     [ApiController]
     public class FilesController : ControllerBase
     {
         private readonly FileExtensionContentTypeProvider _fileExtensionContentTypeProvider;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="fileExtensionContentTypeProvider"></param>
+        /// <exception cref="System.ArgumentNullException"></exception>
         public FilesController(FileExtensionContentTypeProvider fileExtensionContentTypeProvider)
         {
             _fileExtensionContentTypeProvider = fileExtensionContentTypeProvider
@@ -19,7 +29,14 @@ namespace CityInfo.API.Controllers
                    nameof(fileExtensionContentTypeProvider));
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="fileId"></param>
+        /// <returns></returns>
         [HttpGet("{fileId}")]
+        [ApiVersion(0.1, Deprecated = true)]
+        //[ApiExplorerSettings(GroupName = "v0.1")]
         public ActionResult GetFile(string fileId)
         {
             // look up att he acutal file, depending on the fieldId...
@@ -41,6 +58,11 @@ namespace CityInfo.API.Controllers
             return File(bytes, contentType, Path.GetFileName(pathToFile));
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="file"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<ActionResult> Createfile(IFormFile file)
         {

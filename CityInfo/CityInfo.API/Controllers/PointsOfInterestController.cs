@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using Asp.Versioning;
+using AutoMapper;
 using CityInfo.API.Models;
 using CityInfo.API.Services;
 using Microsoft.AspNetCore.Authorization;
@@ -7,9 +8,15 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CityInfo.API.Controllers
 {
-    [Route("api/cities/{cityId:int}/pointsofinterest")]
+    /// <summary>
+    /// 
+    /// </summary>
+    //[Route("api/cities/{cityId:int}/pointsofinterest")]
+    [ApiVersion(2)]
+    [Route("api/v{version:apiVersion}/cities/{cityId:int}/pointsofinterest")]
     [Authorize(Policy = "MustBeFromAntwerp")]
     [ApiController]
+    //[ApiExplorerSettings(GroupName = "v2")]
     public class PointsOfInterestController : ControllerBase
     {
         private readonly ILogger<PointsOfInterestController> _logger;
@@ -17,6 +24,14 @@ namespace CityInfo.API.Controllers
         private readonly ICityInfoRepository _cityInfoRepository;
         private readonly IMapper _mapper;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="logger"></param>
+        /// <param name="mailService"></param>
+        /// <param name="cityInfoRepository"></param>
+        /// <param name="mapper"></param>
+        /// <exception cref="ArgumentNullException"></exception>
         public PointsOfInterestController(
             ILogger<PointsOfInterestController> logger,
             IMailService mailService, 
@@ -32,6 +47,11 @@ namespace CityInfo.API.Controllers
             // HttpContext.RequestServices.GetService(typeof(HttpContent));
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="cityId"></param>
+        /// <returns></returns>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<PointOfInterestDto>>> GetPointsOfInterest(int cityId)
         {
@@ -75,6 +95,12 @@ namespace CityInfo.API.Controllers
             //}
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="cityId"></param>
+        /// <param name="pointOfInterestId"></param>
+        /// <returns></returns>
         [HttpGet("{pointOfInterestId:int}", Name = "GetPointOfInterest")]
         public async Task<ActionResult<PointOfInterestDto>> GetPointOfInterest(int cityId, int pointOfInterestId) 
         {
@@ -109,6 +135,12 @@ namespace CityInfo.API.Controllers
             //return Ok(pointOfInterest);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="cityId"></param>
+        /// <param name="pointOfInterest"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<ActionResult<PointOfInterestDto>> CreatePointOfInterest(int cityId,
             PointOfInterestForCreationDto pointOfInterest)
@@ -135,6 +167,13 @@ namespace CityInfo.API.Controllers
                 createdPointOfInterestToReturn);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="cityId"></param>
+        /// <param name="pointofinterestid"></param>
+        /// <param name="pointOfInterest"></param>
+        /// <returns></returns>
         [HttpPut("{pointofinterestid}")]
         public async Task<ActionResult> UpdatePointOfInterest(int cityId, int pointofinterestid,
             PointOfInterestForUpdateDto pointOfInterest)
@@ -157,6 +196,13 @@ namespace CityInfo.API.Controllers
             return NoContent();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="cityId"></param>
+        /// <param name="pointOfInterestid"></param>
+        /// <param name="patchDocument"></param>
+        /// <returns></returns>
         [HttpPatch("{pointofinterestid}")]
         public async Task<ActionResult> PartiallyUpdatePointOfInterest(
             int cityId, int pointOfInterestid,
@@ -195,6 +241,12 @@ namespace CityInfo.API.Controllers
             return NoContent();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="cityId"></param>
+        /// <param name="pointOfInterestId"></param>
+        /// <returns></returns>
         [HttpDelete("{pointOfInterestId}")]
         public async Task<ActionResult> DeletePointOfInterest(int cityId, int pointOfInterestId)
         {
