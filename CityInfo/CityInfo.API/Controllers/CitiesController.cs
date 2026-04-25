@@ -70,6 +70,8 @@ namespace CityInfo.API.Controllers
 
             Response.Headers.TryAdd("X-Pagination", JsonSerializer.Serialize(paginationMetadata));
 
+            var testingMapper = _mapper.Map<IEnumerable<CityWithoutPointsOfInterestDto>>(cityEntities);
+
             return Ok(_mapper.Map<IEnumerable<CityWithoutPointsOfInterestDto>>(cityEntities));
 
             //return Ok();

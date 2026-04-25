@@ -60,5 +60,23 @@ ASP.NET Core API path for practice
 
 &#x20; -- Course tip: Securing ASP.NET Core with OAuth2 and OpenID Connect
 
+&#x20; -- Depricated:: Test web APIs with the HttpRepl: https://learn.microsoft.com/en-us/aspnet/core/web-api/http-repl/?view=aspnetcore-10.0\&tabs=windows
+
+&#x20;    -- Examples of usage:
+
+&#x20;       C:\\Users\\Borovnica $ dotnet tool install -g --prerelease Microsoft.dotnet-httprepl
+
+&#x20;    Depricated: https://github.com/dotnet/HttpRepl/issues/701
+
+&#x20;    Alternative:    command line tool and library for transferring data with URLs  => curl: https://curl.se/
+
+&#x20; -- Use .http files in Visual Studio 2022: https://learn.microsoft.com/en-us/aspnet/core/test/http-files?view=aspnetcore-10.0
+
+&#x20; -- Configure ASP.NET Core to work with proxy servers and load balancers: https://learn.microsoft.com/en-us/aspnet/core/host-and-deploy/proxy-load-balancer?view=aspnetcore-10.0
+
+&#x20; -- Introduction to Application Insights - OpenTelemetry observability: https://learn.microsoft.com/en-us/azure/azure-monitor/app/app-insights-overview?tabs=webapps
+
+&#x20; -- What are managed identities for Azure resources?: https://learn.microsoft.com/en-us/entra/identity/managed-identities-azure-resources/overview
+
 &#x09;
 

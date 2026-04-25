@@ -5,14 +5,26 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>e47c8fce-db16-4439-92c9-e42d12f15229</UserSecretsId>
-    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <GenerateDocumentationFile>False</GenerateDocumentationFile>
     <DocumentationFile>CityInfo.API.json</DocumentationFile>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="CityInfo.db" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="CityInfo.db">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Asp.Versioning.Mvc" Version="8.1.1" />
     <PackageReference Include="Asp.Versioning.Mvc.ApiExplorer" Version="8.1.1" />
     <PackageReference Include="AutoMapper" Version="16.1.1" />
+    <PackageReference Include="Azure.Extensions.AspNetCore.Configuration.Secrets" Version="1.5.0" />
+    <PackageReference Include="Azure.Identity" Version="1.21.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="10.0.5" />
     <PackageReference Include="Microsoft.AspNetCore.JsonPatch" Version="10.0.3" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="10.0.3" />
@@ -25,6 +37,7 @@
     </PackageReference>
     <PackageReference Include="Scalar.AspNetCore" Version="2.12.41" />
     <PackageReference Include="Serilog.AspNetCore" Version="10.0.0" />
+    <PackageReference Include="Serilog.Sinks.ApplicationInsights" Version="5.0.1" />
     <PackageReference Include="serilog.sinks.console" Version="6.1.1" />
     <PackageReference Include="serilog.sinks.file" Version="7.0.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="10.1.3" />

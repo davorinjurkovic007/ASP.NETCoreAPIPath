@@ -1,5 +1,8 @@
 using Asp.Versioning;
 using Asp.Versioning.ApiExplorer;
+using Azure.Extensions.AspNetCore.Configuration.Secrets;
+using Azure.Identity;
+using Azure.Security.KeyVault.Secrets;
 using CityInfo.API;
 using CityInfo.API.DbContexts;
 using CityInfo.API.Profiles;
@@ -16,7 +19,13 @@ using System.Reflection;
 Log.Logger = new LoggerConfiguration()
     .MinimumLevel.Debug()
     .WriteTo.Console()
-    .WriteTo.File("logs/cityinfo.txt", rollingInterval: RollingInterval.Day)
+    //.WriteTo.File("logs/cityinfo.txt", rollingInterval: RollingInterval.Day)
+    //.WriteTo.ApplicationInsights(
+    //    new Microsoft.ApplicationInsights.Extensibility.TelemetryConfiguration()
+    //    {
+    //        InstrumentationKey = "140aab24-e590-454f-8d1c-97b1daab6c87"
+    //    }, 
+    //    TelemetryConverter.Traces)
     .CreateLogger();
 
 // Pročitati za dalje:
@@ -57,8 +66,35 @@ Log.Logger = new LoggerConfiguration()
 var builder = WebApplication.CreateBuilder(args);
 //builder.Logging.ClearProviders();
 //builder.Logging.AddConsole();
-builder.Host.UseSerilog();
 
+var environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+
+if (environment == Environments.Development)
+{
+    builder.Host.UseSerilog(
+        (context, loggerConfiguration) => loggerConfiguration
+            .MinimumLevel.Debug()
+            .WriteTo.Console()
+    );
+}
+else
+{
+    var secretClient = new SecretClient(
+        new Uri("https://demokeyvaultdavorin.vault.azure.net/"),
+        new DefaultAzureCredential());
+    builder.Configuration.AddAzureKeyVault(secretClient, new KeyVaultSecretManager());
+
+    builder.Host.UseSerilog((context, loggerConfiguration) => loggerConfiguration
+        .MinimumLevel.Debug()
+        .WriteTo.Console()
+        .WriteTo.File("logs/cityinfo.txt", rollingInterval: RollingInterval.Day)
+        .WriteTo.ApplicationInsights(
+            new Microsoft.ApplicationInsights.Extensibility.TelemetryConfiguration()
+            {
+                ConnectionString = builder.Configuration["ApplicationInsightsConnectionString"]
+            },
+            TelemetryConverter.Traces));
+}
 // Add services to the container.
 
 builder.Services.AddControllers(options =>
@@ -253,6 +289,11 @@ builder.Services.AddApiVersioning(setupAction =>
     setupAction.SubstituteApiVersionInUrl = true;
 });
 
+builder.Services.Configure<ForwardedHeadersOptions>(options =>
+{
+    options.ForwardedHeaders = Microsoft.AspNetCore.HttpOverrides.ForwardedHeaders.XForwardedFor
+    | Microsoft.AspNetCore.HttpOverrides.ForwardedHeaders.XForwardedProto;
+});
 
 var app = builder.Build();
 
@@ -262,8 +303,10 @@ if(!app.Environment.IsDevelopment())
     app.UseExceptionHandler();
 }
 
-if (app.Environment.IsDevelopment())
-{
+app.UseForwardedHeaders();
+
+//if (app.Environment.IsDevelopment())
+//{
     //app.MapOpenApi("/openapi/CityInfo.API.json");
     app.MapOpenApi();
 
@@ -293,7 +336,7 @@ if (app.Environment.IsDevelopment())
             .AddDocument("v2", "API Version 2.0", "/openapi/v2.json")
             .AddDocument("v0.1", "API Version 0.1", "/openapi/v0.1.json");
     });
-}
+//}
 
 app.UseHttpsRedirection();
 

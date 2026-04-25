@@ -1,0 +1,43 @@
+# For more info on HTTP files go to https://aka.ms/vs/httpfile
+@schema=https
+@hostname=localhost
+@port=7003
+
+GET {{schema}}://{{hostname}}:{{port}}/api/v2/cities
+
+###
+GET {{schema}}://{{hostname}}:{{port}}/api/v2/cities
+Accept:application/xml
+
+###
+POST {{schema}}://{{hostname}}:{{port}}/api/v2/cities/1/pointsofinterest
+Accept: application/json
+Content-Type: application/json
+
+{
+    "name": "A name for testing",
+    "description": "A description for testing"
+}
+
+###
+
+// get a token
+POST {{schema}}://{{hostname}}:{{port}}/api/authentication/authenticate
+Content-Type: application/json
+
+{
+    "username": "KeviDockx",
+    "password": "This is a relativele long sentence that acts as my password"
+}
+
+###
+
+// authentication GET request
+GET {{schema}}://{{hostname}}:{{port}}/api/v2/cities
+Accept: application/json
+Content-Type: application/json
+Authorizatio: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwiZ2l2ZW5fbmFtZSI6IktldmluIiwiZmFtaWx5X25hbWUiOiJEb2NreCIsImNpdHkiOiJBbnR3ZXJwIiwibmJmIjoxNzc2NjMzMjQ1LCJleHAiOjE3NzY2MzY4NDUsImlzcyI6Imh0dHBzOi8vbG9jYWxob3N0OjcwMDMiLCJhdWQiOiJjaXR5aW5mb2FwaSJ9.WkNeoNkLuXadU6ZCnUM-8Ob7wrsSskddYnVnlvOJv_E
+
+// Napomena: Probati to složiti da pohrani token u variablu i 
+// i da ga onda pozove iz te variable
+
