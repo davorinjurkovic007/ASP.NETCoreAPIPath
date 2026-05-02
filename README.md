@@ -78,5 +78,25 @@ ASP.NET Core API path for practice
 
 &#x20; -- What are managed identities for Azure resources?: https://learn.microsoft.com/en-us/entra/identity/managed-identities-azure-resources/overview
 
+
+
+2\. Building a Web App with ASP.NET Core 10, MVC, Entity Framework, TailwindCSS, and Vue
+
+&#x20;  -- aspnet-client-validation
+
+&#x20;     https://www.jsdelivr.com/package/npm/aspnet-client-validation
+
+&#x20;   -- Adding client-side validation to ASP.NET Core, without jQuery or unobtrusive validation
+
+&#x20;      https://andrewlock.net/adding-client-side-validation-to-aspnet-core-without-jquery-or-unobtrusive-validation/
+
+&#x20;   -- aspnet-client-validation
+
+&#x20;      https://github.com/haacked/aspnet-client-validation/tree/main
+
+&#x20;   -- ASP.NET Core 6 Razor Pages Fundamentals
+
+&#x20;      https://app.pluralsight.com/ilx/video-courses/asp-dot-net-core-6-razor-pages-fundamentals/course-overview
+
 &#x09;
 
