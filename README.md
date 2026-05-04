@@ -98,5 +98,19 @@ ASP.NET Core API path for practice
 
 &#x20;      https://app.pluralsight.com/ilx/video-courses/asp-dot-net-core-6-razor-pages-fundamentals/course-overview
 
+&#x20;   -- CSS Utility Classes and "Separation of Concerns"
+
+&#x20;      https://adamwathan.me/css-utility-classes-and-separation-of-concerns/
+
+&#x20;   -- Get started with Tailwind CSS
+
+&#x20;      https://tailwindcss.com/docs/installation/tailwind-cli
+
+SE
+
+How to Integrate Tailwind CSS on an ASP.NET MVC Web Application 
+
+https://youtu.be/6xcusQFp9EU?si=dMfffS7CVVNdYqlK
+
 &#x09;
 
