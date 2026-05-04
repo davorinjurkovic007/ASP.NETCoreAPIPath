@@ -106,11 +106,13 @@ ASP.NET Core API path for practice
 
 &#x20;      https://tailwindcss.com/docs/installation/tailwind-cli
 
-SE
+&#x20;   -- How to Integrate Tailwind CSS on an ASP.NET MVC Web Application
 
-How to Integrate Tailwind CSS on an ASP.NET MVC Web Application 
+&#x20;      https://youtu.be/6xcusQFp9EU?si=dMfffS7CVVNdYqlK
 
-https://youtu.be/6xcusQFp9EU?si=dMfffS7CVVNdYqlK
+&#x20;   -- A different approach to learning Tailwind CSS
+
+&#x20;      https://youtu.be/1IkybTYPOZk?si=UlQbjNHg0A5wa0\_U
 
 &#x09;
 
