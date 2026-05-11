@@ -114,5 +114,15 @@ ASP.NET Core API path for practice
 
 &#x20;      https://youtu.be/1IkybTYPOZk?si=UlQbjNHg0A5wa0\_U
 
+&#x20;   -- cdnjs
+
+&#x20;      https://cdnjs.com/
+
+&#x20;      Note: Content Delivery Network. Odatle mogu uzeti besplatne stvari. 
+
+&#x20;   -- Font Awesome
+
+&#x20;      https://fontawesome.com/
+
 &#x09;
 
