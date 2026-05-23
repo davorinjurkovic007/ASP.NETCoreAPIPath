@@ -21,6 +21,14 @@
     <Folder Include="Pages\Models\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.8">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="10.0.8" />
+  </ItemGroup>
+
 	<ItemGroup>
 		<UpToDateCheckBuilt Include="wwwroot/site.src.css" Set="Css" />
 	</ItemGroup>
@@ -29,7 +37,7 @@
 		<!--<Exec Command="npx @tailwindcss/cli -i ./wwwroot/site.src.css -o ./wwwroot/site.css - -minify" />-->
 		<Exec Command="npx @tailwindcss/cli -i ./wwwroot/site.src.css -o ./wwwroot/site.css" />
 		<ItemGroup>
-			<Content Include="wwwroot/site.css" CopyToPublishDirectory ="Always" />
+			<Content Include="wwwroot/site.css" CopyToPublishDirectory="Always" />
 		</ItemGroup>
 	</Target>
 

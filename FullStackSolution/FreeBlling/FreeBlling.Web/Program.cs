@@ -1,7 +1,20 @@
 using FreeBlling.Web;
+using FreeBlling.Web.Data;
 using FreeBlling.Web.Services;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
+
+IConfigurationBuilder configBuilder = builder.Configuration;
+configBuilder.Sources.Clear();
+configBuilder.AddJsonFile("appsettings.json")
+    .AddJsonFile("appsettings.Development.json", true)
+    .AddUserSecrets(Assembly.GetExecutingAssembly())
+    .AddEnvironmentVariables()
+    .AddCommandLine(args);
+
+builder.Services.AddDbContext<BillingContext>();
+builder.Services.AddScoped<IBillingRepository, BillingRepository>();
 
 builder.Services.AddRazorPages();
 builder.Services.AddTransient<IEmailService, DevTimeEmailService>();
