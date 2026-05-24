@@ -19,6 +19,8 @@ builder.Services.AddScoped<IBillingRepository, BillingRepository>();
 builder.Services.AddRazorPages();
 builder.Services.AddTransient<IEmailService, DevTimeEmailService>();
 
+builder.Services.AddControllers();
+
 var app = builder.Build();
 
 if (builder.Environment.IsDevelopment())
@@ -39,5 +41,7 @@ app.MapRazorPages();
 //{
 //    await ctx.Response.WriteAsync("<html><body><h1>Welcome to FreeBilling</h1></body></html>");
 //});
+
+app.MapControllers();
 
 app.Run();

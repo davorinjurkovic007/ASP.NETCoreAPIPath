@@ -45,6 +45,37 @@ namespace FreeBlling.Web.Data
             }
         }
 
+        public async Task<IEnumerable<Customer>> GetCustomersWithAddresses()
+        {
+            try
+            {
+                return await _context.Customers
+                    .Include(e => e.Address)
+                    .OrderBy(e => e.CompanyName)
+                    .ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                logger.LogError($"Could not get Customers: {ex.Message}");
+                throw;
+            }
+        }
+
+        public async Task<Customer?> GetCustomer(int id)
+        {
+            try
+            {
+                return await _context.Customers
+                        .Where(c => c.Id == id)
+                        .FirstOrDefaultAsync();
+            }
+            catch (Exception ex)
+            {
+                logger.LogError($"Could not get Customer: {ex.Message}");
+                throw;
+            }
+        }
+
         public async Task<bool> SaveChanges()
         {
             try
