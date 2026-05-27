@@ -184,6 +184,9 @@
   .visible {
     visibility: visible;
   }
+  .static {
+    position: static;
+  }
   .mx-2 {
     margin-inline: calc(var(--spacing) * 2);
   }

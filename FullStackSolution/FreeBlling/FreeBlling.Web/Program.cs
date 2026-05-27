@@ -1,6 +1,12 @@
+using FluentValidation;
+using FreeBilling.Data.Entities;
 using FreeBlling.Web;
+using FreeBlling.Web.Apis;
 using FreeBlling.Web.Data;
+using FreeBlling.Web.Migrations;
 using FreeBlling.Web.Services;
+using FreeBlling.Web.Validators;
+using Mapster;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -20,6 +26,10 @@ builder.Services.AddRazorPages();
 builder.Services.AddTransient<IEmailService, DevTimeEmailService>();
 
 builder.Services.AddControllers();
+
+builder.Services.AddValidatorsFromAssemblyContaining<TimeBillModelValidator>();
+
+TypeAdapterConfig.GlobalSettings.Scan(Assembly.GetExecutingAssembly());
 
 var app = builder.Build();
 
@@ -41,6 +51,8 @@ app.MapRazorPages();
 //{
 //    await ctx.Response.WriteAsync("<html><body><h1>Welcome to FreeBilling</h1></body></html>");
 //});
+
+TimeBillsApi.Register(app);
 
 app.MapControllers();
 

@@ -118,11 +118,19 @@ ASP.NET Core API path for practice
 
 &#x20;      https://cdnjs.com/
 
-&#x20;      Note: Content Delivery Network. Odatle mogu uzeti besplatne stvari. 
+&#x20;      Note: Content Delivery Network. Odatle mogu uzeti besplatne stvari.
 
 &#x20;   -- Font Awesome
 
 &#x20;      https://fontawesome.com/
+
+&#x20;   -- FluentValidation vs .NET 10 Built-In Validation: Performance Benchmark
+
+&#x20;      https://ivangechev.com/blog/minimal-apis/uentvalidation-vs-dotnet-10-validation
+
+&#x20;   -- Mapster - The Mapper of Your Domain
+
+&#x20;      https://mapstermapper.github.io/Mapster/index.html	
 
 &#x09;
 
