@@ -130,7 +130,11 @@ ASP.NET Core API path for practice
 
 &#x20;   -- Mapster - The Mapper of Your Domain
 
-&#x20;      https://mapstermapper.github.io/Mapster/index.html	
+&#x20;      https://mapstermapper.github.io/Mapster/index.html
+
+&#x20;   -- Create local token for development: Visual Studio -> Tools-> Command Line -> Development PowerShell => $ dotnet user-jwts create
+
+&#x20;		-- Creating sign-key: $ dotnet user-jwts key	
 
 &#x09;
 

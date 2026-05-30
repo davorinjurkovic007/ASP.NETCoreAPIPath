@@ -1,9 +1,15 @@
 ﻿using FreeBilling.Data.Entities;
 using FreeBlling.Web.Data;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FreeBlling.Web.Controllers
 {
+    //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    //[Authorize(AuthenticationSchemes = IdentityConstants.BearerScheme)]
+    [Authorize("api")]
     //[Route("/api/customers")]
     [Route("/api/[controller]")]
     public class CustomersController : ControllerBase

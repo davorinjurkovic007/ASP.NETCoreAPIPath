@@ -123,5 +123,12 @@ namespace FreeBlling.Web.Data
                 .Include(b => b.Employee)
                 .FirstOrDefaultAsync();
         }
+
+        public async Task<Employee?> GetEmployee(string? name)
+        {
+            return await _context.Employees
+                .Where(e => e.Email == name)
+                .FirstOrDefaultAsync();
+        }
     }
 }

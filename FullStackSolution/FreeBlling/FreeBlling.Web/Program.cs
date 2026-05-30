@@ -3,13 +3,20 @@ using FreeBilling.Data.Entities;
 using FreeBlling.Web;
 using FreeBlling.Web.Apis;
 using FreeBlling.Web.Data;
+using FreeBlling.Web.Data.Entities;
 using FreeBlling.Web.Migrations;
 using FreeBlling.Web.Services;
 using FreeBlling.Web.Validators;
 using Mapster;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using System.Reflection;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
+var connectionString = builder.Configuration.GetConnectionString("BillingDb") ?? throw new InvalidOperationException("Connection string 'FreeBllingWebContext' not found.");
 
 IConfigurationBuilder configBuilder = builder.Configuration;
 configBuilder.Sources.Clear();
@@ -20,6 +27,43 @@ configBuilder.AddJsonFile("appsettings.json")
     .AddCommandLine(args);
 
 builder.Services.AddDbContext<BillingContext>();
+
+// This is working for client side, for MVC
+//builder.Services.AddDefaultIdentity<TimeBillUser>(options =>
+//{
+//    options.SignIn.RequireConfirmedAccount = false;
+//    options.Password.RequiredLength = 8;
+//})
+//    .AddEntityFrameworkStores<BillingContext>();
+
+//This is for API endpoint
+builder.Services.AddIdentityApiEndpoints<TimeBillUser>(options =>
+{
+   options.SignIn.RequireConfirmedAccount = false;
+   options.Password.RequiredLength = 8;
+})
+   .AddEntityFrameworkStores<BillingContext>();
+
+builder.Services.AddAuthentication()
+    .AddJwtBearer();
+//.AddBearerToken();
+
+builder.Services.AddAuthorization(cfg =>
+{
+    cfg.AddPolicy("ApiPolicy", bldr =>
+    {
+        bldr.RequireAuthenticatedUser();
+        bldr.AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme);
+    });
+});
+
+builder.Services.AddAuthorizationBuilder()
+    .AddPolicy("api", cfg =>
+    {
+        cfg.RequireAuthenticatedUser();
+        cfg.AddAuthenticationSchemes(IdentityConstants.BearerScheme);
+    });
+
 builder.Services.AddScoped<IBillingRepository, BillingRepository>();
 
 builder.Services.AddRazorPages();
@@ -61,5 +105,7 @@ app.MapRazorPages();
 TimeBillsApi.Register(app);
 
 app.MapControllers();
+
+//app.MapGroup("api/auth").MapIdentityApi<TimeBillUser>();
 
 app.Run();
