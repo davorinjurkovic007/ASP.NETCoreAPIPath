@@ -29,23 +29,32 @@ configBuilder.AddJsonFile("appsettings.json")
 builder.Services.AddDbContext<BillingContext>();
 
 // This is working for client side, for MVC
-//builder.Services.AddDefaultIdentity<TimeBillUser>(options =>
-//{
-//    options.SignIn.RequireConfirmedAccount = false;
-//    options.Password.RequiredLength = 8;
-//})
-//    .AddEntityFrameworkStores<BillingContext>();
+builder.Services.AddDefaultIdentity<TimeBillUser>(options =>
+{
+    options.SignIn.RequireConfirmedAccount = false;
+    options.Password.RequiredLength = 8;
+})
+    .AddEntityFrameworkStores<BillingContext>();
 
 //This is for API endpoint
-builder.Services.AddIdentityApiEndpoints<TimeBillUser>(options =>
-{
-   options.SignIn.RequireConfirmedAccount = false;
-   options.Password.RequiredLength = 8;
-})
-   .AddEntityFrameworkStores<BillingContext>();
+//builder.Services.AddIdentityApiEndpoints<TimeBillUser>(options =>
+//{
+//   options.SignIn.RequireConfirmedAccount = false;
+//   options.Password.RequiredLength = 8;
+//})
+//   .AddEntityFrameworkStores<BillingContext>();
 
 builder.Services.AddAuthentication()
-    .AddJwtBearer();
+    .AddJwtBearer(cfg =>
+    {
+        cfg.TokenValidationParameters = new TokenValidationParameters()
+        {
+            ValidIssuer = builder.Configuration["Token:Issuer"],
+            ValidAudience = builder.Configuration["Token:Audience"],
+            IssuerSigningKey = new SymmetricSecurityKey(
+                Encoding.UTF8.GetBytes(builder.Configuration["Token:Key"] ?? ""))
+        };
+    });
 //.AddBearerToken();
 
 builder.Services.AddAuthorization(cfg =>
@@ -83,13 +92,14 @@ if (builder.Environment.IsDevelopment())
 }
 
 // Allows us to serve index.html as the defautl webpage
-app.UseDefaultFiles();
+//app.UseDefaultFiles();
 
 // Allows us to serve files from wwwroot
 app.UseStaticFiles();
 
 // Add Routing
 app.UseRouting();
+//app.UseAuthentication();
 
 // Add Auth middleware
 app.UseAuthorization();
@@ -103,6 +113,7 @@ app.MapRazorPages();
 //});
 
 TimeBillsApi.Register(app);
+AuthApi.Register(app);
 
 app.MapControllers();
 

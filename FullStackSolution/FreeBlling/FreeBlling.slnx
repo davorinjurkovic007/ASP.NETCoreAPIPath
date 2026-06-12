@@ -1,3 +1,7 @@
 <Solution>
+  <Project Path="FreeBilling.App/freebilling.app.esproj">
+    <Build />
+    <Deploy />
+  </Project>
   <Project Path="FreeBlling.Web/FreeBlling.Web.csproj" />
 </Solution>

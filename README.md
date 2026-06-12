@@ -134,7 +134,13 @@ ASP.NET Core API path for practice
 
 &#x20;   -- Create local token for development: Visual Studio -> Tools-> Command Line -> Development PowerShell => $ dotnet user-jwts create
 
-&#x20;		-- Creating sign-key: $ dotnet user-jwts key	
+&#x20;		-- Creating sign-key: $ dotnet user-jwts key
+
+&#x20;   -- Master TailwindCSS 4 for Vue
+
+&#x20;      https://vueschool.io/articles/vuejs-tutorials/master-tailwindcss-4-for-vue/
+
+&#x20;      Note: Too Tailwind start to take CSS from another project, TailwindCSS must be installed, according to the instructions
 
 &#x09;
 
