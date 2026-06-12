@@ -142,5 +142,9 @@ ASP.NET Core API path for practice
 
 &#x20;      Note: Too Tailwind start to take CSS from another project, TailwindCSS must be installed, according to the instructions
 
+&#x20;   -- Building Web Apps with Vue
+
+&#x20;      https://app.pluralsight.com/paths/skill/building-web-apps-with-vue
+
 &#x09;
 
