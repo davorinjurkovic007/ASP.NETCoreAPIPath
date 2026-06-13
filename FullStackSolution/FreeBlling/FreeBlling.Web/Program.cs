@@ -119,4 +119,7 @@ app.MapControllers();
 
 //app.MapGroup("api/auth").MapIdentityApi<TimeBillUser>();
 
+// No route was found, go to the vue app
+app.MapFallbackToPage("/customerBilling");
+
 app.Run();
