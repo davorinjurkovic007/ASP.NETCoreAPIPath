@@ -146,5 +146,9 @@ ASP.NET Core API path for practice
 
 &#x20;      https://app.pluralsight.com/paths/skill/building-web-apps-with-vue
 
+&#x20;   -- Vue 3 Forms
+
+&#x20;      
+
 &#x09;
 
