@@ -114,6 +114,8 @@ app.MapRazorPages();
 
 TimeBillsApi.Register(app);
 AuthApi.Register(app);
+EmployeeApi.Register(app);
+//CustomerApi.Register(app);
 
 app.MapControllers();
 

@@ -102,9 +102,9 @@
       </thead>
       <tbody>
         <tr v-for="b in bills">
-          <td>{{b.hoursWorked}}</td>
+          <td>{{b.hours}}</td>
           <td>{{b.date}}</td>
-          <td>{{b.work}}</td>
+          <td>{{b.workPerformed}}</td>
         </tr>
       </tbody>
     </table>
