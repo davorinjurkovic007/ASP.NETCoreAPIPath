@@ -1,0 +1,1 @@
+import{n as e,r as t,t as n}from"./App-DT7XnL9a.js";t(n).use(e).mount(`#app`);
