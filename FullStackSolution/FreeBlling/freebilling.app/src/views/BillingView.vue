@@ -13,9 +13,10 @@
   onMounted(async () => {
     try {
 
-      if (!state.token) {
-        router.push("/login");
-      }
+      // It does not need this, because it is not going to happen. It is setup on Router page
+      // if (!state.token) {
+      //   router.push("/login");
+      // }
 
       const employeeResult = await axios.get("/api/employees", {
         headers: {
